@@ -66,6 +66,7 @@ class FourgetHijackerClient:
             category = 'video'
         else:
             category = 'web'
+        print(f"[DEBUG] query={query}, category={category}, original_category={locals().get('category')}", flush=True)
 
         params.update({
             'url': 'http://4get-hijacked:80/harness.php',
