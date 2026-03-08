@@ -58,7 +58,7 @@ class FourgetHijackerClient:
             category = params.category
 
         # Translate all SearXNG categories to 4get method names
-        if category == 'general':
+        if category in ('general', 'none', None):
             category = 'web'
         elif category == 'images':
             category = 'image'
