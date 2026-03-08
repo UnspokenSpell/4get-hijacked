@@ -64,7 +64,8 @@ class FourgetHijackerClient:
             category = 'image'
         elif category == 'videos':
             category = 'video'
-
+        else:
+            category = 'web'
 
         params.update({
             'url': 'http://4get-hijacked:80/harness.php',
