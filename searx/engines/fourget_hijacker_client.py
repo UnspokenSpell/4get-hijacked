@@ -67,6 +67,7 @@ class FourgetHijackerClient:
         else:
             category = 'web'
         print(f"[DEBUG] query={query}, category={category}, original_category={locals().get('category')}", flush=True)
+        print(f"[DEBUG] Request params: {params}", flush=True)
 
         params.update({
             'url': 'http://4get-hijacked:80/harness.php',
@@ -82,6 +83,8 @@ class FourgetHijackerClient:
     @staticmethod
     def dispatch_response(resp: Any, engine_id: str, logger: Any) -> list:
         """Centralized response handler with error hoisting."""
+        print(f"[DEBUG] Response status={resp.status_code}, content_length={len(resp.text) if hasattr(resp, 'text') else 'N/A'}", flush=True)
+        print(f"[DEBUG] Response preview: {str(resp.text)[:200] if hasattr(resp, 'text') else 'No text'}", flush=True)
         try:
             return FourgetHijackerClient.normalize_results(resp.json())
         except (SearxEngineCaptchaException, 
